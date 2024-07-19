@@ -5,5 +5,8 @@
 
 @font-face {
   font-family: 'MagdaMono';
-  src: url('./fonts/MagdaMono.ttf') format('truetype');
+  src: url('../styles/font/MagdaMono.ttf') format('truetype');
 }
+
+/* TESTE GRID */
+

@@ -5,15 +5,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DevLift Hub</title>
-  <link href="./src/output.css" rel="stylesheet">
-  <script defer src="dist/index.js"></script>
+
+  <!-- Meta tags para SEO -->
+  <meta name="description"
+    content="DevLift Hub oferece recursos que elevam rapidamente o seu código, dedicados a desenvolvedores ágeis. Encontre ferramentas, serviços e tutoriais essenciais para aprimorar seu desenvolvimento de software.">
+  <meta name="keywords"
+    content="ferramentas para desenvolvedores, serviços para desenvolvedores, tutoriais de programação, recursos de desenvolvimento, ferramentas ágeis, desenvolvimento ágil">
+  <meta name="author" content="Seu Nome">
+
+  <!-- Open Graph tags para redes sociais -->
+  <meta property="og:title" content="DevLift Hub - Elevate Your Code with Essential Tools">
+  <meta property="og:description"
+    content="Encontre recursos que elevam rapidamente seu código no DevLift Hub, um ponto de encontro para desenvolvedores ágeis. Acesse ferramentas, serviços e tutoriais essenciais para melhorar seu desenvolvimento de software.">
+  <meta property="og:image" content="URL da imagem para o Open Graph (recomendado 1200x630)">
+  <meta property="og:url" content="URL do seu site">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DevLift Hub - Elevate Your Code with Essential Tools">
+  <meta name="twitter:description"
+    content="Descubra recursos que ajudam a elevar rapidamente o seu código no DevLift Hub. Dedicado a desenvolvedores ágeis, com ferramentas e tutoriais essenciais para o desenvolvimento de software.">
+  <meta name="twitter:image" content="URL da imagem para o Twitter Card (recomendado 1200x628)">
+
+  <link href="./src/styles/output.css" rel="stylesheet">
+  <script defer src="./dist/scripts/crud.js"></script>
+  <script defer src="./dist/scripts/fetchNavigation.js"></script>
+  <script defer src="./dist/scripts/handleClick.js"></script>
+  <script defer src="./dist/scripts/index.js"></script>
+  <script defer src="./dist/scripts/localStorage.js"></script>
+  <script defer src="./dist/scripts/renderContent.js"></script>
+  <script defer src="./dist/scripts/resourcesDefault.js"></script>
+  <script defer src="./dist/scripts/switchTheme.js"></script>
+  <script defer src="./dist/scripts/toggleModal.js"></script>
   <link rel="shortcut icon" href="assets/velocidade.png" type="image/x-icon">
 </head>
 
-<body>
-  <h1 class="text-3xl font-bold font-mono">
-    Resources that Elevate Your Code Quickly, Dedicated to Agile Developers
-  </h1>
+<body
+  class="bg-neutral-300 dark:bg-neutral-700 bg-pattern min-w-screen min-h-screen flex flex-col h-full min-w-screen font-mono">
+
+  <div class="p-4 text-right">
+    <button id="theme-toggle"
+      class="bg-sky-950 text-sky-400 border border-sky-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
+      Toggle Theme
+      <span
+        class="bg-sky-400 shadow-sky-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]">
+      </span>
+    </button>
+  </div>
+
+  <div id="root" onload="fetchNavigation('./src/pages/home.html')" class="flex flex-1 h-full">
+  </div>
+
 </body>
 
 </html>
