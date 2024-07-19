@@ -103,7 +103,7 @@ async function fetchNavigation(url: string): Promise<void> {
 
 
 initLocalStorage(resources)
-fetchNavigation("../src/pages/home.html")
+// fetchNavigation("../src/pages/home.html")
 
 
 

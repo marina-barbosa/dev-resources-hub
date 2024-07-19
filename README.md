@@ -1,5 +1,5 @@
 # dev-resources-hub
 
-html
-tailwidncss
-typescript
+- HTML
+- TailwindCSS
+- Typescript
