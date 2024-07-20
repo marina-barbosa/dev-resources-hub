@@ -10,8 +10,6 @@ function addItem(event) {
     const title = titleInput.value.trim();
     let url = urlInput.value.trim();
     const description = descriptionInput.value.trim();
-    const fullUrl = new URL(url, window.location.origin);
-    console.log("fullurl" + fullUrl);
     if (!title || !url) {
         console.error('Todos os campos são obrigatórios.');
         return;
@@ -19,7 +17,6 @@ function addItem(event) {
     if (!/^https?:\/\//i.test(url)) {
         url = 'https://' + url;
     }
-    console.log("url" + url);
     const newItem = {
         id: Date.now(),
         title,

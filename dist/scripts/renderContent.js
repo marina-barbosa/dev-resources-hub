@@ -18,8 +18,9 @@ function renderContent(resources) {
             category.items.forEach((item) => {
                 const li = document.createElement("li");
                 li.className = "border-t border-neutral-600 py-2 flex justify-between relative";
+                li.title = item.description;
                 const itemName = document.createElement("a");
-                itemName.className = "text-xl hover:text-sky-300 transition-all duration-400 mr-5";
+                itemName.className = "text-xl hover:text-sky-300 transition-all duration-400 mr-5 group";
                 itemName.textContent = item.title;
                 itemName.href = item.url;
                 itemName.target = "_blank";
