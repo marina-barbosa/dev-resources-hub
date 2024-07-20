@@ -1,6 +1,6 @@
 function addItem(event: Event): void {
   event.preventDefault();
- 
+
   const form = document.querySelector('#add-form') as HTMLFormElement;
   const catTitle = form.getAttribute('data-category')!;
   let data = localStorage.getItem('resources');
@@ -10,12 +10,16 @@ function addItem(event: Event): void {
   const descriptionInput = document.querySelector('#description-input') as HTMLTextAreaElement;
 
   const title = titleInput.value.trim();
-  const url = urlInput.value.trim();
+  let url = urlInput.value.trim();
   const description = descriptionInput.value.trim();
 
   if (!title || !url) {
     console.error('Todos os campos são obrigatórios.');
     return;
+  }
+
+  if (!/^https?:\/\//i.test(url)) {
+    url = 'https://' + url;
   }
 
   const newItem = {

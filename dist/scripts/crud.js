@@ -8,12 +8,18 @@ function addItem(event) {
     const urlInput = document.querySelector('#url-input');
     const descriptionInput = document.querySelector('#description-input');
     const title = titleInput.value.trim();
-    const url = urlInput.value.trim();
+    let url = urlInput.value.trim();
     const description = descriptionInput.value.trim();
+    const fullUrl = new URL(url, window.location.origin);
+    console.log("fullurl" + fullUrl);
     if (!title || !url) {
         console.error('Todos os campos são obrigatórios.');
         return;
     }
+    if (!/^https?:\/\//i.test(url)) {
+        url = 'https://' + url;
+    }
+    console.log("url" + url);
     const newItem = {
         id: Date.now(),
         title,
