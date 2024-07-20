@@ -9,7 +9,6 @@ function initLocalStorage(resources: Category[]): void {
   }
 }
 
-
 interface Item {
   id: number;
   title: string;
