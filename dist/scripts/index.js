@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 function initLocalStorage(resources) {
     const storageResources = localStorage.getItem("resources");
     if (!storageResources) {
@@ -65,33 +56,28 @@ const resources = [
         ]
     }
 ];
-function fetchNavigation(url) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const rootElement = document.getElementById('root');
-        if (rootElement) {
-            rootElement.innerHTML = '';
+function ajaxNavigation(url, callback) {
+    let root = document.getElementById('root');
+    if (!root)
+        return;
+    root.innerHTML = '';
+    let ajax = new XMLHttpRequest();
+    ajax.open('GET', url);
+    ajax.onreadystatechange = () => {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            root.innerHTML = ajax.responseText;
+            if (callback)
+                callback();
         }
-        else {
-            console.error('Div root não encontrada.');
-            return;
+        if (ajax.readyState == 4 && ajax.status == 404) {
+            root.innerHTML = 'Requisição finalizada, porém o recurso não foi encontrado. Erro 404.';
         }
-        try {
-            const response = yield fetch(url);
-            if (!response.ok) {
-                throw new Error(`Requisição finalizada, porém o recurso não foi encontrado. Erro ${response.status}.`);
-            }
-            const data = yield response.text();
-            rootElement.innerHTML = data;
-        }
-        catch (error) {
-            if (error instanceof Error) {
-                rootElement.innerHTML = error.message;
-            }
-            else {
-                rootElement.innerHTML = 'Algo deu errado.';
-            }
-        }
-    });
+    };
+    ajax.send();
 }
-initLocalStorage(resources);
-fetchNavigation("../src/pages/home.html");
+// initLocalStorage(resources)
+// fetchNavigation("../src/pages/home.html")
+document.addEventListener('DOMContentLoaded', () => {
+    initLocalStorage(resources);
+    ajaxNavigation("src/pages/home.html");
+});

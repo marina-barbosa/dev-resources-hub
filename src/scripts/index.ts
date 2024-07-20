@@ -69,41 +69,32 @@ const resources: Category[] = [
   }
 ];
 
+function ajaxNavigation(url: string, callback?: () => void) {
+  let root = document.getElementById('root');
 
+  if (!root) return;
 
+  root.innerHTML = '';
+  let ajax = new XMLHttpRequest();
+  ajax.open('GET', url);
 
-async function fetchNavigation(url: string): Promise<void> {
-
-  const rootElement = document.getElementById('root');
-  if (rootElement) {
-    rootElement.innerHTML = '';
-  } else {
-    console.error('Div root não encontrada.');
-    return;
-  }
-
-  try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error(`Requisição finalizada, porém o recurso não foi encontrado. Erro ${response.status}.`);
+  ajax.onreadystatechange = () => {
+    if (ajax.readyState == 4 && ajax.status == 200) {
+      root.innerHTML = ajax.responseText;
+      if (callback) callback();
     }
-
-    const data = await response.text();
-    rootElement.innerHTML = data;
-
-  } catch (error) {
-    if (error instanceof Error) {
-      rootElement.innerHTML = error.message;
-    } else {
-      rootElement.innerHTML = 'Algo deu errado.';
+    if (ajax.readyState == 4 && ajax.status == 404) {
+      root.innerHTML = 'Requisição finalizada, porém o recurso não foi encontrado. Erro 404.';
     }
-  }
+  };
+  ajax.send();
 }
 
 
-initLocalStorage(resources)
+// initLocalStorage(resources)
 // fetchNavigation("../src/pages/home.html")
 
-
-
+document.addEventListener('DOMContentLoaded', () => {
+  initLocalStorage(resources)
+  ajaxNavigation("src/pages/home.html");
+});

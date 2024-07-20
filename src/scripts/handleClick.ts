@@ -1,9 +1,8 @@
-async function getStarted(): Promise<void> {
+function getStarted(): void {
   let data = localStorage.getItem('resources');
   if (data) {
     let resources = JSON.parse(data);
-    await fetchNavigation('../src/pages/resources.html')
-    renderContent(resources)
+    ajaxNavigation("src/pages/resources.html", () => renderContent(resources))
   }
 }
 
