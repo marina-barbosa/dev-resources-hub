@@ -70,3 +70,62 @@ function deleteItem(event: Event): void {
   renderContent(localResources)
   toggleModalDelete()
 }
+
+
+
+
+function addCategory(event: Event): void {
+  event.preventDefault();
+
+  const form = document.querySelector('#category-form') as HTMLFormElement;
+  const titleInput = document.querySelector('#category-title-input') as HTMLInputElement;
+
+  const title = titleInput.value.trim();
+
+  if (!title) {
+    console.error('O título da categoria é obrigatório.');
+    return;
+  }
+
+  let data = localStorage.getItem('resources');
+  let localResources: Category[] = data ? JSON.parse(data) : [];
+
+  if (localResources.some(cat => cat.title.toUpperCase() === title.toUpperCase())) {
+    console.error('Categoria já existe.');
+    return;
+  }
+
+  const newCategory: Category = {
+    title,
+    items: []
+  };
+
+  localResources.push(newCategory);
+  localStorage.setItem('resources', JSON.stringify(localResources));
+  renderContent(localResources);
+  form.reset();
+}
+
+function deleteCategory() {
+  const input = document.querySelector("#delete-category-title-input") as HTMLInputElement;
+  const categoryName = input.value.trim();
+
+  if (categoryName) {
+
+    const data = localStorage.getItem('resources');
+    let localResources: Category[] = data ? JSON.parse(data) : [];
+    const category = localResources.find(cat => cat.title.toUpperCase() === categoryName.toUpperCase());
+
+    if (!category) return;
+
+    localResources = localResources.filter(cat => cat.title.toUpperCase() !== categoryName.toUpperCase());
+
+    localStorage.clear();
+    localStorage.setItem('resources', JSON.stringify(localResources));
+    renderContent(localResources);
+    toggleModalDeleteCategory();
+  } else {
+    toggleModalDeleteCategory();
+  }
+}
+

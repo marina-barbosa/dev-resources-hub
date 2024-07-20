@@ -33,9 +33,9 @@
               class="bg-sky-400 shadow-sky-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
             add
           </button>
+        </div>
       </form>
     </div>
-  </div>
   </div>
 
 
@@ -52,6 +52,31 @@
           yes
         </button>
         <button onclick="toggleModalDelete()"
+          class="bg-neutral-800 text-neutral-400 border border-neutral-500 border-b-4 font-medium overflow-hidden relative px-2 py-1 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group w-[45px]">
+          <span
+            class="bg-sky-400 shadow-sky-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+          no
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="modal-delete-category"
+    class="hidden bg-black/80 w-screen h-screen fixed top-0 left-0 z-50 items-center justify-center">
+    <div id="card-delete-category"
+      class=" bg-neutral-800 text-neutral-200 rounded-lg p-4 border border-neutral-500 shadow-custom-card hover:scale-105 transition-all duration-300 flex flex-col justify-between gap-6 w-60">
+      <p>Are you sure?</p>
+      <p>Warning! This will delete the category along with all the items contained within it. Do you really want to
+        proceed?</p>
+      <div class="w-full flex justify-between gap-2">
+        <button id="confirm-delete-category" onclick="deleteCategory()"
+          class="bg-sky-950 text-sky-400 border border-sky-400 border-b-4 font-medium overflow-hidden relative px-2 py-1 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group w-[45px]">
+          <span
+            class="bg-sky-400 shadow-sky-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+          yes
+        </button>
+        <button onclick="toggleModalDeleteCategory()"
           class="bg-neutral-800 text-neutral-400 border border-neutral-500 border-b-4 font-medium overflow-hidden relative px-2 py-1 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group w-[45px]">
           <span
             class="bg-sky-400 shadow-sky-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>

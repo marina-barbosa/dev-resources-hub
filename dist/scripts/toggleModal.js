@@ -9,3 +9,8 @@ function toggleModalDelete() {
     (_a = document.getElementById("modal-delete")) === null || _a === void 0 ? void 0 : _a.classList.toggle("hidden");
     (_b = document.getElementById("modal-delete")) === null || _b === void 0 ? void 0 : _b.classList.toggle("flex");
 }
+function toggleModalDeleteCategory() {
+    var _a, _b;
+    (_a = document.getElementById("modal-delete-category")) === null || _a === void 0 ? void 0 : _a.classList.toggle("hidden");
+    (_b = document.getElementById("modal-delete-category")) === null || _b === void 0 ? void 0 : _b.classList.toggle("flex");
+}

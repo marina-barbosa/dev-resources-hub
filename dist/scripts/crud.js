@@ -57,3 +57,46 @@ function deleteItem(event) {
     renderContent(localResources);
     toggleModalDelete();
 }
+function addCategory(event) {
+    event.preventDefault();
+    const form = document.querySelector('#category-form');
+    const titleInput = document.querySelector('#category-title-input');
+    const title = titleInput.value.trim();
+    if (!title) {
+        console.error('O título da categoria é obrigatório.');
+        return;
+    }
+    let data = localStorage.getItem('resources');
+    let localResources = data ? JSON.parse(data) : [];
+    if (localResources.some(cat => cat.title.toUpperCase() === title.toUpperCase())) {
+        console.error('Categoria já existe.');
+        return;
+    }
+    const newCategory = {
+        title,
+        items: []
+    };
+    localResources.push(newCategory);
+    localStorage.setItem('resources', JSON.stringify(localResources));
+    renderContent(localResources);
+    form.reset();
+}
+function deleteCategory() {
+    const input = document.querySelector("#delete-category-title-input");
+    const categoryName = input.value.trim();
+    if (categoryName) {
+        const data = localStorage.getItem('resources');
+        let localResources = data ? JSON.parse(data) : [];
+        const category = localResources.find(cat => cat.title.toUpperCase() === categoryName.toUpperCase());
+        if (!category)
+            return;
+        localResources = localResources.filter(cat => cat.title.toUpperCase() !== categoryName.toUpperCase());
+        localStorage.clear();
+        localStorage.setItem('resources', JSON.stringify(localResources));
+        renderContent(localResources);
+        toggleModalDeleteCategory();
+    }
+    else {
+        toggleModalDeleteCategory();
+    }
+}
