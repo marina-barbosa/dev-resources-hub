@@ -1,6 +1,5 @@
 "use strict";
 function renderContent(resources) {
-    console.log('renderizando Content');
     const content = document.querySelector("#content");
     if (content && resources) {
         content.innerHTML = '';
@@ -11,7 +10,6 @@ function renderContent(resources) {
             const contentContainer = document.createElement("div");
             contentContainer.className = "flex flex-col flex-1";
             const title = document.createElement("div");
-            // title.id = "title";
             title.className = "py-2 text-2xl font-bold uppercase text-neutral-500";
             title.textContent = category.title;
             const ul = document.createElement("ul");
@@ -29,13 +27,6 @@ function renderContent(resources) {
                 button.textContent = "x";
                 button.setAttribute("data-key", item.id.toString());
                 button.setAttribute("data-category", category.title);
-                // button.addEventListener('click', (e) => {
-                //   const target = e.target as HTMLElement;
-                //   const itemId = parseInt(target.getAttribute('data-key')!);
-                //   const catTitle = target.getAttribute('data-category')!;
-                //   const localResources = deleteItem(catTitle, itemId);
-                //   if (localResources) renderContent(localResources);
-                // });
                 button.addEventListener('click', handleDeleteClick);
                 li.appendChild(itemName);
                 li.appendChild(button);
@@ -49,16 +40,6 @@ function renderContent(resources) {
       <span class="bg-sky-400 shadow-sky-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
       add`;
             addButton.setAttribute("data-category", category.title);
-            // addButton.addEventListener('click', (e) => {
-            //   const newId = Date.now();
-            //   const newTitle = prompt('Enter the title:')?.trim();
-            //   const newUrl = prompt('Enter the URL:')?.trim();
-            //   if (newTitle && newUrl) {
-            //     const newItem: Item = { id: newId, title: newTitle, url: newUrl };
-            //     const localResources = addItem(category.title, newItem);
-            //     if (localResources) renderContent(localResources);
-            //   }
-            // });
             addButton.addEventListener('click', handleAddClick);
             addButtonContainer.appendChild(addButton);
             contentContainer.appendChild(title);
@@ -110,11 +91,6 @@ function renderContent(resources) {
         </button>
       </div>
     `;
-        // const deleteCategoryForm = deleteCategoryCard.querySelector("#delete-category-form");
-        // if (deleteCategoryForm) {
-        //   deleteCategoryForm.addEventListener('submit', deleteCategory);
-        // }
         content.appendChild(deleteCategoryCard);
-        console.log('render concluido');
     }
 }

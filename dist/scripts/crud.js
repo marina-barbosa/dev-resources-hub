@@ -10,10 +10,8 @@ function addItem(event) {
     const title = titleInput.value.trim();
     let url = urlInput.value.trim();
     const description = descriptionInput.value.trim();
-    if (!title || !url) {
-        console.error('Todos os campos são obrigatórios.');
+    if (!title || !url)
         return;
-    }
     if (!/^https?:\/\//i.test(url)) {
         url = 'https://' + url;
     }
@@ -23,16 +21,12 @@ function addItem(event) {
         url,
         description: description ? description : "nothing to say"
     };
-    if (!data) {
-        console.error('data?');
+    if (!data)
         return;
-    }
     const localResources = JSON.parse(data);
     const category = localResources.find(cat => cat.title === catTitle);
-    if (!category) {
-        console.error('cadegory?');
+    if (!category)
         return;
-    }
     category.items.push(newItem);
     localStorage.clear();
     localStorage.setItem('resources', JSON.stringify(localResources));
