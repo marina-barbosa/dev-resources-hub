@@ -79,7 +79,7 @@ function renderContent(resources: Category[]): void {
           type="text" required />
         <button type="submit"
           class="bg-sky-950 text-sky-400 border border-sky-400 border-b-4 font-medium overflow-hidden relative px-2 py-1 
-        rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 mb-6 group">
+        rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
           <span
             class="bg-sky-400 shadow-sky-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]">
           </span>
@@ -104,7 +104,7 @@ function renderContent(resources: Category[]): void {
           type="text" required />
         <button onclick="toggleModalDeleteCategory()"
           class="bg-red-600 text-white border border-red-400 border-b-4 font-medium overflow-hidden relative px-2 py-1 
-        rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 mb-6 group">
+        rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
           <span
             class="bg-red-400 shadow-red-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]">
           </span>
